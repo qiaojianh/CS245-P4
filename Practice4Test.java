@@ -24,14 +24,21 @@ public class Practice4Test {
 	}
 	
 	
-	public boolean isPalindrome(String item) {
+	public boolean isPalindrome(String items) {
+		//adjuct items
+		String item = items.toLowerCase().replaceAll("\\pP" , "").replaceAll(" ","");
+
 		clearData();
+
 		for (int i = 0; i < item.length(); i++) {
 			stack.push(item.substring(i, i+1));
 			queue.enqueue(item.substring(i, i+1));
 		}
+		
 
 		while (! stack.empty() && ! queue.empty()) {
+
+
 			if (! stack.pop().equals(queue.dequeue())) {
 				return false;
 			}
